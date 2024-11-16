@@ -1,4 +1,3 @@
-//your JS code here. If required.
 const username = document.getElementById('username');
 const password = document.getElementById('password');
 const checkbox = document.getElementById('checkbox');
@@ -14,14 +13,14 @@ submit.addEventListener('click', (e)=>{
         return false;
     }
     else if(checkbox.checked){
-        const user = { username: username.value, password:password.value };
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("username", JSON.stringify(username.value));
+        localStorage.setItem("password", JSON.stringify(password.value));
     }
     alert(`Logged in as ${username.value}`)
     location.reload();
 })
 
-if(localStorage.getItem('user')){
+if(localStorage.getItem('username')){
     const btn = document.createElement('button');
     btn.setAttribute('id', 'existing');
     btn.textContent = 'Login as existing user';
@@ -30,8 +29,8 @@ if(localStorage.getItem('user')){
 
     // handle any button click.
     btn.addEventListener('click', ()=>{
-        const user = JSON.parse(localStorage.getItem('user'));
-        alert(`Logged in as ${user.username}`);
+        const user = JSON.parse(localStorage.getItem('username'));
+        alert(`Logged in as ${user}`);
     })
 
 }
